@@ -16,7 +16,8 @@ namespace Library{
     public static void AddGameToShelf(Game newGame){
       bool foundSame = false;
       foreach(Game game in GameShelf){
-        if ((game.Title == newGame.Title) && (game.System == newGame.System)){
+        //Console.WriteLine($"GameTitle <{game.Title}>, GameSystem <{game.System}> == NewGameTitle <{newGame.Title}>, NewGameSystem <{newGame.System}>");
+        if (!(game.Title == newGame.Title) || !(game.System == newGame.System)){
           continue;
         } else { 
           foundSame = true;

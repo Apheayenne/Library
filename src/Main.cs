@@ -8,8 +8,15 @@ namespace Library
     {
       MainLoop loop = new MainLoop();
       loop.Loop();
-      
-      FileWriter.Writer("gameshelf.txt");
+      //Testing.Tests.Test3();
+
+      //Use in Visual Studio
+      //string path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+      //Use in VSCode
+      string projectPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName, @"Library\src\save\data");
+
+      FileWriter.Writer(projectPath, "gameshelf.txt");
 			//FileWriter.Writer("..\\..\\..\\bookshelf.txt");
 			//FileWriter.Writer("..\\..\\..\\mangashelf.txt");
 		}

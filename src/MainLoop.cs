@@ -47,15 +47,15 @@ namespace Library {
       switch (insert) {
         case "Game":
         case "1":
-          Insert.ItemData("game");
+          RequestData.RequestGame();
           break;
         case "Book":
         case "2":
-          Insert.ItemData("book");
+          RequestData.RequestBook();
           break;
         case "Manga":
         case "3":
-          Insert.ItemData("manga");
+          RequestData.RequestManga();
           break;
         case "Quit":
         case "4":
