@@ -3,17 +3,20 @@ using System;
 namespace Library{
   public sealed class BookCase{
 
+    private static List<Game>? _gameShelf;
     public static List<Game> GameShelf {
       get{
-        if(GameShelf ??= new List<Game>());
-        return GameShelf;
+        return _gameShelf ??= new List<Game>();
       }
-    }
+      set{ 
+        _gameShelf = value;
+      }
+		}
 
-    public void AddGameToShelf(Game newGame){
+    public static void AddGameToShelf(Game newGame){
       bool foundSame = false;
       foreach(Game game in GameShelf){
-        if ((game.Name != newGame.Name) && (game.System != newGame.System)){
+        if ((game.Title == newGame.Title) && (game.System == newGame.System)){
           continue;
         } else { 
           foundSame = true;
@@ -25,32 +28,38 @@ namespace Library{
         GameShelf.Add(newGame);
       }
     }
-
+    
+    private static List<Book>? _bookShelf;
     public static List<Book> BookShelf {
       get {
-        if (BookShelf ??= new List<Book>());
-        return BookShelf;
-        }
-    }
+        return _bookShelf ??= new List<Book>();
+      }
+      set {
+        BookShelf = value;
+      }
+		}
     
-    public void AddBookToShelf(Book newBook){
+    public static void AddBookToShelf(Book newBook){
       foreach(Book book in BookShelf){
-        if (!(book.Name == newBook.Name)){
+        if (!(book.Title == newBook.Title)){
           BookShelf.Add(newBook);
         }
       }
     }
    
+    private static List<Manga>? _mangaShelf;
     public static List<Manga> MangaShelf {
       get{
-        MangaShelf ??= new List<Manga>();
-        return MangaShelf;
+        return _mangaShelf ??= new List<Manga>();
       }
-    }
+      set{
+        MangaShelf = value;
+      }
+		}
     
-    public void AddMangaToShelf(){
+    public static void AddMangaToShelf(Manga newManga){
       foreach(Manga Manga in MangaShelf){
-        of()
+        
       }
     }
   }

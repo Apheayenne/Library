@@ -1,28 +1,20 @@
 using System;
+using System.Reflection;
 
 namespace Library {
-  public class Book(string title, string author, string series, int number) : Item(title, author){
+  public class Book(string title, string author, string? series, int? number, bool isRead = false) : Item(title, author){
     
-    public string Series { get; private set; }
-    public int BookNumber { get; private set; }
-    public bool IsRead { get; private set; }
-    
-    public Book(string title, string author, string series, int number, bool isRead = false) : base(title, author){
-      Series = series;
-      BookNumber = number;
-      IsRead = isRead;
-      BookCase.BookShelf.Add();
-    }
-    
-    public void UpdateIsRead(bool isRead) {
-      IsRead = isRead;
-    }
+    public string? Series { get; private set; } = series;
+    public int? BookNumber { get; private set; } = number;
+    public bool IsRead { get; set; } = isRead;
 
     public override string ToString() {
       return $"{Title}, by {Author}, series {Series} book {BookNumber}";
     }
     
-    public 
+    public string Save(){
+      return $"{Title}|{Author}|{Series}|{BookNumber}|{IsRead}";
+		}
 
   }
 }

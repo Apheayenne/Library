@@ -8,7 +8,7 @@ namespace Library {
 
       do {
         Console.WriteLine("\nWhat do you want to insert:\n1) Game\n2) Book\n3) Manga\n4) Quit");
-        string insert = Console.ReadLine().ToString();
+        string insert = Console.ReadLine()!.ToString();
         continueLoop = WhichInsert(insert);
       } while (continueLoop);
     }
@@ -47,15 +47,15 @@ namespace Library {
       switch (insert) {
         case "Game":
         case "1":
-          Insert.InsertGame();
+          Insert.ItemData("game");
           break;
         case "Book":
         case "2":
-          Insert.InsertBook();
+          Insert.ItemData("book");
           break;
         case "Manga":
         case "3":
-          Insert.InsertManga();
+          Insert.ItemData("manga");
           break;
         case "Quit":
         case "4":

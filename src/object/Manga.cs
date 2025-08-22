@@ -12,5 +12,9 @@ namespace Library {
     public override string ToString() {
       return $"{Title}, by {Author}, volume {VolumeNumber}";
     }
-  }
+
+		public string Save() {
+			return $"{Title}|{Author}|{VolumeNumber}|{IsRead}";
+		}
+	}
 }
