@@ -1,55 +1,52 @@
 using System;
-using System.Diagnostics.SymbolStore;
-using System.Security;
-using System.Transactions;
 
 namespace Library{
   public static class RequestData{
 
 		public static void RequestGame(){
-      string gameTitle = getUserInput("What is the Title: ");
-      string gameAuthor = getUserInput("Who is the Developer: ");
-      string gamePublisher = getUserInput("Who is the Publisher: ");
-      string gameSystem = getUserInput("Which System is it for: ");
+      string title = getUserInput("What is the Title: ");
+      string developer = getUserInput("Who is the Developer: ");
+      string publisher = getUserInput("Who is the Publisher: ");
+      string system = getUserInput("Which System is it for: ");
 
-      Game game = new Game(gameTitle, gameAuthor, gamePublisher, gameSystem);
-      BookCase.AddGameToShelf(game);
+      Insert.InsertGame(title, developer, publisher, system);
 		}
     
     public static void RequestBook(){
-      string bookTitle = getUserInput("What is the Title: ");
-      string bookAuthor = getUserInput("Who is the Author: ");
+      string title = getUserInput("What is the Title: ");
+      string author = getUserInput("Who is the Author: ");
+
       Console.WriteLine("Is this book in a Series (yes/no): ");
       bool isSeries = Console.ReadLine()?.Trim().ToLower() == "yes";
 
-      string? bookSeries = null;
-      int? bookNumber = null;
+      string? series = null;
+      int? volume = null;
 
       if(isSeries){
-        bookSeries = getUserInput("What is the Series Name: ");
+        series = getUserInput("What is the Series Name: ");
         Console.Write("What book number is it: ");
-        int.TryParse(Console.ReadLine(), out int number);
-        bookNumber = number;
+        if (int.TryParse(Console.ReadLine(), out int number)){
+          volume = number;
+        }
       }
       Console.WriteLine("Have you read this book: ");
       bool bookRead = Console.ReadLine()?.Trim().ToLower() == "yes";
 
-      Book book = new Book(bookTitle, bookAuthor, bookSeries, bookNumber, bookRead);
-      BookCase.AddBookToShelf(book);
+      Insert.InsertBook(title, author, series, volume, bookRead);
     }
     
     public static void RequestManga(){
       string mangaTitle = getUserInput("What is the Title: ");
-					string mangaAuthor = getUserInput("Who is the Author: ");
-					
-					Console.Write("What book number is it: ");
-					int.TryParse(Console.ReadLine(), out int mangaVolume);
-					
-					Console.WriteLine("Have you read this book: ");
-					bool mangaRead = Console.ReadLine()?.Trim().ToLower() == "yes";
+      string mangaAuthor = getUserInput("Who is the Author: ");
+      
+      Console.Write("What book number is it: ");
+      int.TryParse(Console.ReadLine(), out int mangaVolume);
+      
+      Console.WriteLine("Have you read this book: ");
+      bool mangaRead = Console.ReadLine()?.Trim().ToLower() == "yes";
 
-					Manga manga = new Manga(mangaTitle, mangaAuthor, mangaVolume, mangaRead);
-					BookCase.AddMangaToShelf(manga);
+      Manga manga = new Manga(mangaTitle, mangaAuthor, mangaVolume, mangaRead);
+      BookCase.AddMangaToShelf(manga);
     }
 
     private static string getUserInput(string prompt) {
