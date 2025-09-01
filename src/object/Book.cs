@@ -2,10 +2,10 @@ using System;
 using System.Reflection;
 
 namespace Library {
-  public class Book(string title, string author, string? series, int? number, bool isRead = false) : Item(title, author){
+  public class Book(string title, string author, string series, int number, bool isRead) : Item(title, author){
     
-    public string? Series { get; private set; } = series;
-    public int? BookNumber { get; private set; } = number;
+    public string Series { get; private set; } = series;
+    public int BookNumber { get; private set; } = number;
     public bool IsRead { get; set; } = isRead;
 
     public override string ToString() {
