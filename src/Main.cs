@@ -7,18 +7,45 @@ namespace Library
     public static void Main()
     {
       MainLoop loop = new MainLoop();
-      loop.Loop();
-      //Testing.Tests.Test3();
 
-      //Use in Visual Studio
-      //string path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+      // Passes a file name to constructor.
+      Testing.Tests tests = new Testing.Tests();
 
-      //Use in VSCode
-      string projectPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName, @"Library\src\save\data");
+      // true:  using VSCode
+      // false: using Visual Studio
+      Save(true);
+      
+    }
 
-      FileWriter.Writer(projectPath, "gameshelf.txt");
-			//FileWriter.Writer("..\\..\\..\\bookshelf.txt");
-			//FileWriter.Writer("..\\..\\..\\mangashelf.txt");
-		}
+    public static void TestCases(int[] tests)
+    {
+      foreach (int testCase in tests){
+        switch (testCase){
+          case 1:
+            Testing.Tests.AddEntryToBookCase();
+            break;
+          case 2:
+            Testing.Tests.SameTitleDiffSystem();
+            break;
+          case 3:
+            Testing.Tests.DontAddDups();
+            break;
+          case 4:
+            Testing.Tests.SeriesNoSeries();
+            break;
+        }
+      }
+      Testing.Tests.AddEntryToBookCase();
+      Testing.Tests.SameTitleDiffSystem();
+      Testing.Tests.DontAddDups();
+      Testing.Tests.SeriesNoSeries();
+    }
+
+    public static void Save(bool isVSCode)
+    {
+      //FileWriter.Writer("gameshelf.txt");
+      //FileWriter.Writer("bookshelf.txt");
+      //FileWriter.Writer("mangashelf.txt");
+    }
   }
 }
